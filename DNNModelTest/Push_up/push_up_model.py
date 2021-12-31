@@ -17,15 +17,10 @@ from tensorflow import feature_column
 from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense
-from keras.wrappers.scikit_learn import KerasClassifier
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import KFold
-from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras import layers
 from sklearn.preprocessing import MultiLabelBinarizer
 
 import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestClassifier
 from google.colab import files  #csv 파일 업로드를 위함
 
 seed = 10
@@ -39,9 +34,6 @@ print(data.shape)
 
 label = data['label']
 features = data.drop(['label'],axis=1)
-
-from sklearn.model_selection import train_test_split
-train_x, test_x, train_y, test_y = train_test_split(features, label, test_size=0.2)
 
 def build_model():
   model = keras.Sequential([
@@ -64,12 +56,14 @@ model.summary()
 mlb = MultiLabelBinarizer()
 labels = mlb.fit_transform(label.str.split(","))
 
-train_x, test_x, train_y, test_y = train_test_split(features, labels, test_size=0.2)
+from sklearn.model_selection import train_test_split
+train_x, test_x, train_y, test_y = train_test_split(features, labels, test_size=0.3)
 
 from sklearn.utils import validation
-model.fit(train_x,train_y, epochs = 10)
+model.fit(train_x,train_y, epochs = 30)
 
 model.evaluate(test_x, test_y) #테스트 데이터로 검증
+mlb.classes_
 
 # 테스트를 위한 코드
 # csvTestFile =  files.upload() 
@@ -79,10 +73,13 @@ model.evaluate(test_x, test_y) #테스트 데이터로 검증
 # idx = np.argmax(proba)
 # proba
 
-"""# 새 섹션"""
+"""Save Model
+
+"""
 
 import tensorflowjs as tfjs #저장된 모델을 불러오기 위함
-tfjs.converters.save_keras_model(model,artifacts_dir="./push_up_model.json")
+tfjs.converters.save_keras_model(model,artifacts_dir="./push_up_model1.json") #tensorflow.js 사용 가능 형태로 저장
+model.save('push_up_model.h5') #케라스 모델 저장
 
 
 
