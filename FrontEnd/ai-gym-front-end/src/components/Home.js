@@ -1,19 +1,30 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { configCourseExercise, configEachExercise } from '../features/configure/configureSlice';
 
 function Home() {
-    let b1_text = "운동 종류 선택"
-    let b2_text = "목표 설정"
-    let b3_text = "운동 코스"
-    let b4_text = "운동 시작"
+    const dispatch = useDispatch()
+
+    let b1_text = "개별 운동"
+    let b2_text = "코스 운동"
+
+    const setConfigEachExercise = () => {
+        dispatch(configEachExercise())
+    }
+
+    const setConfigCourseExercise = () => {
+        dispatch(configCourseExercise())
+    }
+
     return (
         <div>
             <p>AI-GYM</p>
-            <button>{b1_text}</button>
-            <button>{b2_text}</button>
-            <button>{b3_text}</button>
-            <Link to="/start">
-                <button>{b4_text}</button>
+            <Link to='/configEachFirst'>
+                <button onClick={setConfigEachExercise}>{b1_text}</button>
+            </Link>
+            <Link to='/configCourseFirst'>
+                <button onClick={setConfigCourseExercise}>{b2_text}</button>
             </Link>
         </div>
     )
