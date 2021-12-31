@@ -9,23 +9,14 @@ const videoConstraints = {
 
 function ExerciseScreen() {
     const webcamRef = useRef(null)
-    //imgSrc에 png 데이터가 들어간다.
-    const [imgSrc, setImgSrc] = useState(null)
-
-    //이미지를 캡처하는 함수.
-    const capture = useCallback(
-        () => {
-            const imageSrc = webcamRef.current.getScreenshot()
-            setImgSrc(imageSrc)
-        },
-        [webcamRef, setImgSrc]
-    )
 
     useEffect(() => {
-        capture()
-        console.log(imgSrc)
+        setInterval(() => {
+            //스크린샷을 찍어서 imageSrc에 저장한다.
+            const imageSrc = webcamRef.current.getScreenshot()
+            console.log(imageSrc)
+        }, 500)
     })
-    
 
     return (
         <div>
