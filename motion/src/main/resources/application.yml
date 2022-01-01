@@ -1,0 +1,10 @@
+server:
+  port: 8080
+  
+model:
+  upload:
+    path: C:\\Users\\User\\Downloads\\motion\\src\\main\\resources\\static\\model
+    fileName: model
+  
+cors:
+  url: http://localhost:3000
