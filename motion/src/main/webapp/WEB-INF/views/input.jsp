@@ -68,6 +68,8 @@
  <script>
     var item ='${item}';
  
+    var data = JSON.parse('${data}');
+    
  	window.history.forward();
 	function noBack() {
 		window.history.forward();
@@ -77,12 +79,16 @@
  		
  		var inputCount = document.getElementById("countInputBox").value; 
  		
+ 		if (data.timerOn == 0){
+ 			data.timerOn = 1;
+ 			data.time = new Date().getTime()
+ 		}
  		if (inputCount ==null || inputCount == undefined || inputCount == ''){
  			alert('비정상적인 값 입니다');
  		} else if (inputCount<=0){
  			alert('0이상의 숫자만 입력이 가능합니다');
  		} else {
- 			 location.href="/webcam?item="+item+"&inputCount="+inputCount+"&data="+encodeURI('${data}');
+ 			 location.href="/webcam?item="+item+"&inputCount="+inputCount+"&data="+encodeURI(JSON.stringify(data));
  		}
  	}
  </script>

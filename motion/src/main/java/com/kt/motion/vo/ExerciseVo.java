@@ -14,6 +14,8 @@ public class ExerciseVo {
 	int squatCount;
 	int steamCount;
 	int lungeCount;
+	long time;
+	int timerOn;
 	
 	public int getPushupCount() {
 		return pushupCount;
@@ -43,7 +45,7 @@ public class ExerciseVo {
 	@Override
 	public String toString() {
 		return "{\\\"pushupCount\\\":" + pushupCount + ", \\\"squatCount\\\":" + squatCount + ", \\\"steamCount\\\":" + steamCount
-				+ ", \\\"lungeCount\\\":" + lungeCount + "}";
+				+ ", \\\"lungeCount\\\":" + lungeCount + ", \\\"time\\\":" + time+", \\\"timerOn\\\":"+timerOn+"}";
 	}
 	
 }

@@ -48,11 +48,13 @@
 
 	var data = JSON.parse('${data}');
 	var outData = document.getElementById("outData");
+	var nowTime = new Date().getTime() - data.time;
 	outData.innerText="PushUp : "+data.pushupCount+ " 회\n"+
 	"Squrt : "+data.squatCount+ " 회\n"+
 	"SteamEngine : "+data.steamCount+ " 회\n"+
 	"Lunge : "+data.lungeCount+ " 회\n" + "\n" +
-	"총 소모 칼로리 : " + (data.pushupCount*1.8 + data.squatCount*0.4 + data.steamCount*0.9 + data.lungeCount*0.2) +" kcal";
+	"총 소모 칼로리 : " + (data.pushupCount*1.8 + data.squatCount*0.4 + data.steamCount*0.9 + data.lungeCount*0.2) +" kcal"+
+	" 총 소요 시간 : " + Math.floor(nowTime/1000/60) + "분 "+ Math.floor(nowTime/1000) + "초";
 	console.log(data.pushupCount);
 </script>
 </body>
