@@ -74,7 +74,7 @@
 	}
 
  	function count(){
- 		c
+ 		
  		var inputCount = document.getElementById("countInputBox").value; 
  		
  		if (inputCount ==null || inputCount == undefined || inputCount == ''){
