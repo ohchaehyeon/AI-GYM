@@ -172,6 +172,7 @@
   	                	if(value2 > value1 && value2 > value3){
   	                		checkAction('a');
   	                	}else {
+  	                		
   	                		checkAction('r');
   	                	} 
   	                	/* arr.sort();
@@ -288,6 +289,8 @@
   	                	if(value1 > value2 && value1 > value3){
   	                		checkAction('a');
   	                	}else {
+  	                		
+  	         
   	                		checkAction('r');
   	                	} 
   	                	/* else if(arr[2] == value2){

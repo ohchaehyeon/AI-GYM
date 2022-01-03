@@ -72,7 +72,11 @@
                             <img class="img-fluid" src="assets/img/portfolio/lunges.png" alt="..." />
                         </div>
                     </div>
+                    
+                    <p id=outData class="btn btn-primary btn-xl masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+                  
                    <button type="button" class="btn btn-primary btn-xl" id="btn" onclick="finish()">Finish</button>
+                   
                 </div>
             </div>
         </section>	
