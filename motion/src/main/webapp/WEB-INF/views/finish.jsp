@@ -38,6 +38,7 @@
                 <!-- Masthead Subheading-->
                 <p id=outData class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
             </div>
+            <audio src="assets/sound/exercise_finish.m4a" controls autoplay style="display:none"></audio>
         </header>
 <script>
 	window.history.forward();

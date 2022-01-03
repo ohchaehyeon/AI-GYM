@@ -8,6 +8,11 @@
 	 화면 : webcam 화면구현
      기능 : 웹캠 화면에 gif 추가
 --> 
+<!-- 날짜 : 2022.01.04
+	 작성자 : 오채현
+	 화면 : webcam 사운드 구현
+     기능 : 웹캠 화면에 audio 추가
+--> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -106,6 +111,7 @@
     switch(item) {
     //pushup 모델 연동
     case "pushup":
+    	document.write('<audio src="assets/sound/pushup.m4a" controls autoplay style="display:none"></audio>');
     	changeHeadData(data.pushupCount);
     	const startPushup = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
@@ -156,7 +162,7 @@
 		break;
     //squat 모델 연동
     case "squat":
-
+    	document.write('<audio src="assets/sound/squat.m4a" controls autoplay style="display:none"></audio>');
 		changeHeadData(data.squatCount);
     	const startSquat = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
@@ -209,6 +215,7 @@
     	break;
     //steam 모델 연동
     case "steam":
+    	document.write('<audio src="assets/sound/steamengine.m4a" controls autoplay style="display:none"></audio>');
     	changeHeadData(data.steamCount);
     	const startSteam = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
@@ -257,6 +264,7 @@
     	break;
     //lunge 모델 연동
     case "lunge":
+    	document.write('<audio id="lunge-sound" src="assets/sound/lunge.m4a" controls autoplay style="display:none"></audio>');
 		changeHeadData(data.lungeCount);
     	const startLaunge = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
