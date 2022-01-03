@@ -1,30 +1,26 @@
 package com.kt.motion.controller;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class WebcamViewController {
-	
+public class InputController {
+
 	/**
-	 * @ï¿½ï¿½Â¥ : 2022.01.02
-	 * @ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * @ï¿½ï¿½ï¿½ : webcam È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½ï¿½ï¿½ï¿½
-	 * @Method : webcamView
+	 * @³¯Â¥ : 2022.01.03
+	 * @ÀÛ¼ºÀÚ : Á¶Áø¼±
+	 * @±â´É : »ç¿ëÀÚÁöÁ¤ ¿îµ¿È½¼ö ÀÔ·Â°ª ´ëÇÑ ÄÁÆ®·Ñ·¯ ±¸Çö
+	 * @Method : InputView
 	 * @return : ModelAndView
 	 */	
-	@RequestMapping(value="/webcam")
-	public ModelAndView webcamView(
+	@RequestMapping(value="/input")
+	public ModelAndView InputView(
 			@RequestParam("item") String item,
-			@RequestParam("inputCount") int inputCount,
 			@RequestParam("data") String data) {
-		ModelAndView mav = new ModelAndView("webcam");
+		ModelAndView mav = new ModelAndView("input");
 		mav.addObject("item",item);
-		mav.addObject("inputCount",inputCount);
 		mav.addObject("data",data);
 		return mav;
 	}

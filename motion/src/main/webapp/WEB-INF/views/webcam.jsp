@@ -62,6 +62,7 @@
 <script>
 	var nowAction = 'n';
 	var headData = document.getElementById("headData");
+	var inputCount ='${inputCount}';
 
 	window.history.forward();
 	function noBack() {
@@ -91,6 +92,7 @@
     //pushup 모델 연동
     case "pushup":
     	changeHeadData(data.pushupCount);
+    	inputCount= parseInt(inputCount) + parseInt(data.pushupCount);
     	const startPushup = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -141,6 +143,7 @@
     //squat 모델 연동
     case "squat":
     	changeHeadData(data.squatCount);
+    	inputCount= parseInt(inputCount) + parseInt(data.squatCount);
     	const startSquat = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -193,6 +196,7 @@
     //steam 모델 연동
     case "steam":
     	changeHeadData(data.steamCount);
+    	inputCount= parseInt(inputCount) + parseInt(data.steamCount);
     	const startSteam = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -241,6 +245,7 @@
     //lunge 모델 연동
     case "lunge":
     	changeHeadData(data.lungeCount);
+    	inputCount= parseInt(inputCount) + parseInt(data.lungeCount);
     	const startLaunge = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -371,6 +376,10 @@
    
    function changeHeadData(count){
 	   headData.innerText=item + " : " + count +" 회";
+	   if(inputCount == count){
+		   alert('운동 종료');
+		   select();
+	   }
    }
 </script>
 </html>

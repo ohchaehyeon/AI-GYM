@@ -1,7 +1,7 @@
 <!-- 날짜 : 2022.01.02
 	 작성자 : 조진선
 	 화면 : 메인화면 구현
-     기능 : 운동 선택 및 결과 이동화면 구현
+     기능 : 운동 선택 및 결과 이동화면 구현, 현재 운동 횟수 카운트 출력
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,11 +73,30 @@
                         </div>
                     </div>
                     
-                    <p id=outData class="btn btn-primary btn-xl masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
-                  
-                   <button type="button" class="btn btn-primary btn-xl" id="btn" onclick="finish()">Finish</button>
-                   
                 </div>
+                <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="container d-flex align-items-center flex-column">
+                      <p id=outData class="btn btn-primary btn-xl font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+                  	</div>
+                <!-- About Section Button-->
+                <div class="text-center mt-4">
+                    
+                        <button type="button" class="btn btn-xl btn-outline-light" id="btn" onclick="finish()">
+                        Finish</button>
+                    
+                </div>
+            </div>
+        </section>
             </div>
         </section>	
         
@@ -91,12 +110,18 @@
 	}
 
  	function select(item){
- 	    location.href="/webcam?item="+item+"&data="+encodeURI('${data}');
+ 	    location.href="/input?item="+item+"&data="+encodeURI('${data}');
  	}
  	
  	function finish(){
  	    location.href="/finish?data="+encodeURI('${data}');
  	}
+ 	var data = JSON.parse('${data}');
+ 	var outData = document.getElementById("outData");
+	outData.innerText="PushUp : "+data.pushupCount+ " 회\n"+
+	"Squrt : "+data.squatCount+ " 회\n"+
+	"SteamEngine : "+data.steamCount+ " 회\n"+
+	"Lunge : "+data.lungeCount+ " 회\n" + "\n";
  </script>
 </body>
 </html>
