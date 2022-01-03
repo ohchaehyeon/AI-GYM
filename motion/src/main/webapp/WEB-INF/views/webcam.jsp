@@ -3,6 +3,11 @@
 	 화면 : webcam 화면구현
      기능 : 운동 선택 시 모델연동 및 모션인식에 따른 카운트 처리 구현
 -->
+<!-- 날짜 : 2022.01.03
+	 작성자 : 오채현
+	 화면 : webcam 화면구현
+     기능 : 웹캠 화면에 gif 추가
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +37,14 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-
+<style>
+.our-container{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+}
+</style>
 </head>
 <body>
 	<section class="page-section portfolio" id="portfolio">
@@ -47,8 +59,10 @@
 				<div class="divider-custom-line"></div>
 			</div>
 			<div class="row justify-content-center">
-				<video id="webcam" autoplay playsinline width="1000" height="600"
-					style="padding-bottom: 30px"></video>
+				<div class="our-container">
+					<img id="gif" src="${gif}" border="0" width="350" height="560" style="padding-top: 330px">
+					<video id="webcam" autoplay playsinline width="1000" height="600" style="padding-bottom: 30px;"></video>
+				</div>
 				<canvas hidden id="canvas" class="d-none"></canvas>
 				<audio id="snapSound" preload="auto"></audio>
 
@@ -62,13 +76,14 @@
 <script>
 	var nowAction = 'n';
 	var headData = document.getElementById("headData");
-	var inputCount ='${inputCount}';
 
 	window.history.forward();
 	function noBack() {
 		window.history.forward();
 	}
-	
+
+	const gif = document.getElementById("gif");
+
 	const snapBtn = document.getElementById("btn-capture")
 
     const webcamElement = document.getElementById('webcam');
@@ -92,7 +107,6 @@
     //pushup 모델 연동
     case "pushup":
     	changeHeadData(data.pushupCount);
-    	inputCount= parseInt(inputCount) + parseInt(data.pushupCount);
     	const startPushup = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -138,12 +152,12 @@
   	           })
   	           setTimeout(startPushup,2000); 
   	      }
-    	setTimeout(startPushup,3000); 
-    	break;
+    	setTimeout(startPushup,3000);
+		break;
     //squat 모델 연동
     case "squat":
-    	changeHeadData(data.squatCount);
-    	inputCount= parseInt(inputCount) + parseInt(data.squatCount);
+
+		changeHeadData(data.squatCount);
     	const startSquat = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -196,7 +210,6 @@
     //steam 모델 연동
     case "steam":
     	changeHeadData(data.steamCount);
-    	inputCount= parseInt(inputCount) + parseInt(data.steamCount);
     	const startSteam = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -244,8 +257,7 @@
     	break;
     //lunge 모델 연동
     case "lunge":
-    	changeHeadData(data.lungeCount);
-    	inputCount= parseInt(inputCount) + parseInt(data.lungeCount);
+		changeHeadData(data.lungeCount);
     	const startLaunge = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -376,10 +388,6 @@
    
    function changeHeadData(count){
 	   headData.innerText=item + " : " + count +" 회";
-	   if(inputCount == count){
-		   alert('운동 종료');
-		   select();
-	   }
    }
 </script>
 </html>
