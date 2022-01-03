@@ -11,9 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class WebcamViewController {
 	
 	/**
-	 * @��¥ : 2022.01.02
-	 * @�ۼ��� : ������
-	 * @��� : webcam ȭ�� ������ �ϴ� ��Ʈ�ѷ� ����
+	 * @date : 2022.01.02
+	 * @author : Cho jin seon
+	 * @function : A controller that makes the webcam screen come out.
 	 * @Method : webcamView
 	 * @return : ModelAndView
 	 */	
