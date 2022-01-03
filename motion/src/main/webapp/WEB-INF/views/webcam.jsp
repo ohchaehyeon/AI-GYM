@@ -7,7 +7,7 @@
 	 작성자 : 오채현
 	 화면 : webcam 화면구현
      기능 : 웹캠 화면에 gif 추가
--->
+--> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -18,7 +18,7 @@ public class WebcamViewController {
 	 * @Method : webcamView
 	 * @return : ModelAndView
 	 */
-	/**
+	/** 
 	 * @date : 2022.01.03
 	 * @author : Oh Chae Hyeon
 	 * @function : add gif image
