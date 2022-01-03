@@ -17,6 +17,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	implementation 'org.codehaus.jackson:jackson-mapper-lgpl:1.3.0'
+	
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
 
 }
 

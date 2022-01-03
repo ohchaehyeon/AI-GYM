@@ -22,6 +22,13 @@ public class ModelController {
 	@Autowired
 	Properties properties;
 	
+	/**
+	 * @날짜 : 2022.01.02
+	 * @작성자 : 조진선
+	 * @기능 : 모델 로드 컨트롤러 구현
+	 * @Method : loadModel
+	 * @return : result
+	 */
 	@RequestMapping("/load")
 	public Map loadModel() {
 		Map result = new HashMap<String, Object>();

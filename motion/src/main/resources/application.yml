@@ -1,10 +1,20 @@
 server:
   port: 8080
-  
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+        
 model:
   upload:
-    path: C:\\Users\\User\\Downloads\\motion\\src\\main\\resources\\static\\model
+    path: C:\Users\User\Desktop\kt_project\AI-GYM\motion\src\main\resources\static\model
     fileName: model
   
 cors:
   url: http://localhost:3000
+  
+spring:
+  mvc:
+    view: 
+      prefix: /WEB-INF/views/
+      suffix: .jsp

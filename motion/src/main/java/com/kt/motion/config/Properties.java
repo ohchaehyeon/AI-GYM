@@ -5,7 +5,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Properties {
-	
+	/**
+	 * @날짜 : 2022.01.02
+	 * @작성자 : 조진선
+	 * @기능 : 설정파일 세팅
+	 */
 	@Value("${model.upload.path}")
 	String modelPath;
 	
