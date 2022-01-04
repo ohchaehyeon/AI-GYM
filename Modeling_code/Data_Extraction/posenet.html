@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@2.2.2/dist/posenet.min.js"></script>
+
+    <style>
+        /* 이미지에 캔버스를 겹쳐서 그릴때는 아래 주석 해제 */
+        canvas {
+            position: absolute;
+        }
+
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img id='img' />
+    <canvas id="canvas"></canvas>
+    
+</body>
+<script>
+    var imgCount = 1250; // 이미지 끝번호
+    var dataCount = 1001; // 이미지 시작 번호
+    const img = document.getElementById('img');
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    img.src='../dataset_images/steamengine hi/steamengine hi(1936)/steamenginehi ('+dataCount+').png' //이미지 위치
+
+    var csv = []
+    var row = []
+    for (var i = 0; i < 17; i++) {
+        row.push(i + "_position_x")
+        row.push(i + "_position_y")
+        row.push(i + "_score")
+    }
+    row.push("img_height")
+    row.push("img_width")
+    row.push("pose_score") // 각 관절과 이미지 크기, 신뢰도 추출
+    csv.push(row.join(","))
+
+    img_pos();
+
+    function img_pos() {
+        posenet.load().then(function (net) {
+        const pose = net.estimateSinglePose(img, {
+            flipHorizontal: false
+        });
+        return pose;
+        }).then(function (pose) {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            drawKeypoints(pose.keypoints, 0.6, context);
+            drawSkeleton(pose.keypoints, 0.6, context);
+            
+
+            row = []
+
+            for (var i = 0; i < pose.keypoints.length; i++) {
+                row.push(pose.keypoints[i].position.x)
+                row.push(pose.keypoints[i].position.y)
+                row.push(pose.keypoints[i].score)
+            }
+            row.push(img.height)
+            row.push(img.width)
+            row.push(pose.score)
+
+            row.join(",")
+            csv.push(row.join(","))
+            dataCount++;
+            console.log(dataCount);
+            if(dataCount == imgCount) {
+                down_csv();
+            } else {
+                img.src='./images/steamengine hi/steamengine hi(1936)/steamenginehi ('+dataCount+').png';
+                img_pos();
+            }
+        })
+    }
+    
+    function down_csv() {
+        csv = csv.join("\n")
+        let csvContent = "data:text/csv;charset=utf-8," + csv
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "csv_download_strh.csv"); //csv 파일로 저장
+        document.body.appendChild(link); 
+        link.click();
+    }
+   
+</script>
+
+<script src="posenet.js"></script>
+
+
+</html>
