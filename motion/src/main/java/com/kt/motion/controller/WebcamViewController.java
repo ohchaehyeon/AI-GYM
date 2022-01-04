@@ -26,9 +26,11 @@ public class WebcamViewController {
 	@RequestMapping(value="/webcam")
 	public ModelAndView webcamView(
 			@RequestParam("item") String item,
+			@RequestParam("inputCount") int inputCount,
 			@RequestParam("data") String data) {
 		ModelAndView mav = new ModelAndView("webcam");
 		mav.addObject("item",item);
+		mav.addObject("inputCount",inputCount);
 		mav.addObject("data",data);
 
 		Map<String, String> map = new HashMap<String, String>() {{

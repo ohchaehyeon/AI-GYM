@@ -81,7 +81,8 @@
 <script>
 	var nowAction = 'n';
 	var headData = document.getElementById("headData");
-
+	var inputCount = '${inputCount}';
+	
 	window.history.forward();
 	function noBack() {
 		window.history.forward();
@@ -112,6 +113,7 @@
     //pushup 모델 연동
     case "pushup":
     	document.write('<audio src="assets/sound/pushup.m4a" controls autoplay style="display:none"></audio>');
+    	inputCount = parseInt(inputCount) + parseInt(data.pushupCount);
     	changeHeadData(data.pushupCount);
     	const startPushup = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
@@ -163,7 +165,8 @@
     //squat 모델 연동
     case "squat":
     	document.write('<audio src="assets/sound/squat.m4a" controls autoplay style="display:none"></audio>');
-		changeHeadData(data.squatCount);
+    	inputCount = parseInt(inputCount) + parseInt(data.squatCount);
+    	changeHeadData(data.squatCount);
     	const startSquat = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -216,6 +219,7 @@
     //steam 모델 연동
     case "steam":
     	document.write('<audio src="assets/sound/steamengine.m4a" controls autoplay style="display:none"></audio>');
+    	inputCount = parseInt(inputCount) + parseInt(data.steamCount);
     	changeHeadData(data.steamCount);
     	const startSteam = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
@@ -265,7 +269,8 @@
     //lunge 모델 연동
     case "lunge":
     	document.write('<audio id="lunge-sound" src="assets/sound/lunge.m4a" controls autoplay style="display:none"></audio>');
-		changeHeadData(data.lungeCount);
+    	inputCount = parseInt(inputCount) + parseInt(data.lungeCount);
+    	changeHeadData(data.lungeCount);
     	const startLaunge = async function() {
         const model = await tf.loadLayersModel('./model/'+item+'/model.json'); 
         let img = tf.browser.fromPixels(webcamElement); 
@@ -395,7 +400,12 @@
 	}
    
    function changeHeadData(count){
+	   //console.log('######################'+ inputCount + "######" + count);
 	   headData.innerText=item + " : " + count +" 회";
+	   if(inputCount == count) {
+		   alert('운동 종료');
+		  select();
+	   }
    }
 </script>
 </html>
