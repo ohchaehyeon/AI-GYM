@@ -20,7 +20,6 @@ public class FinishViewController {
 			@RequestParam("data") String data ) {
 		
 		ModelAndView mav = new ModelAndView("finish");
-		System.out.println(data);
 		mav.addObject("data", data);
 		return mav;
 	}

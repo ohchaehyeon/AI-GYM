@@ -38,7 +38,6 @@ public class ModelController {
 			JSONObject jsonObject = (JSONObject) parser.parse(reader);
 			
 			result = convertJSONstringToMap(jsonObject.toString());
-			System.out.println(jsonObject.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

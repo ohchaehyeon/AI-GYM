@@ -100,10 +100,7 @@
             </div>
         </section>	
         
- <script>
-  console.log('${data}');
- 	/*var data = JSON.parse('${data}'); */
- 
+ <script> 
  	window.history.forward();
 	function noBack() {
 		window.history.forward();

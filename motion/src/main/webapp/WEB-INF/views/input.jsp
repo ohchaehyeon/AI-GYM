@@ -67,7 +67,6 @@
 </body>
  <script>
     var item ='${item}';
- 
     var data = JSON.parse('${data}');
     
  	window.history.forward();
@@ -76,7 +75,6 @@
 	}
 
  	function count(){
- 		
  		var inputCount = document.getElementById("countInputBox").value; 
  		
  		if (data.timerOn == 0){

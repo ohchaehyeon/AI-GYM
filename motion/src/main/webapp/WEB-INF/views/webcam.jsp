@@ -147,15 +147,6 @@
   	                	}else {
   	                		checkAction('r');
   	                	} 
-  	                /* 	arr.sort();
-  	                	
-  	                	if(arr[2] == value1){
-  	                		checkAction('n');
-  	                	} else if(arr[2] == value2){
-  	                		checkAction('a');
-  	                	} else if(arr[2] == value3){
-  	                		checkAction('r');
-  	                	} */
   	                })
   	           })
   	           setTimeout(startPushup,2000); 
@@ -201,15 +192,6 @@
   	                		
   	                		checkAction('r');
   	                	} 
-  	                	/* arr.sort();
-  	                	
-  	                	if(arr[2] == value1){
-  	                		checkAction('n');
-  	                	} else if(arr[2] == value2){
-  	                		checkAction('a');
-  	                	} else if(arr[2] == value3){
-  	                		checkAction('r');
-  	                	} */
   	                })
   	           })
   	           setTimeout(startSquat,2000); 
@@ -247,19 +229,11 @@
   	                	
   	                	var arr = [value1, value2, value3];
   	                	console.log(arr[0] +' '+  arr[1] + ' '+ arr[2])
-  	                	//arr.sort();
   	                	if(value2 > value1 && value2 > value3){
   	                		checkAction('a');
   	                	}else {
   	                		checkAction('r');
   	                	} 
-  	                	/* if(arr[2] == value1){
-  	                		checkAction('n');
-  	                	} else if(arr[2] == value2){
-  	                		checkAction('a');
-  	                	} else if(arr[2] == value3){
-  	                		checkAction('r');
-  	                	} */
   	                })
   	           })
   	           setTimeout(startSteam,2000); 
@@ -287,47 +261,21 @@
                      row.push(pose.keypoints[i].position.y / canvasElement.height)
                      row.push(pose.keypoints[i].score)
                  }
-                  /* row.push(canvasElement.height)
-                  row.push(canvasElement.width) */
                   row.push(pose.score)
   	                const enc_Data = tf.tensor([row])
   	                model.predict(tf.tensor([row])).array().then(array => {
-  	                	
-  	                	
-  	                
-  	                	/* if ( arr[0] > 0.03 ){
-  	                		checkAction('a');
-  	                	} else if ( arr[0] < 0.001){
-  	                		checkAction('r');
-  	                	}  */
-  	                	/*arr.sort();
-  	                	
-  	                	if(arr[2] == value1){
-  	                		checkAction('a');
-  	                	} else if(arr[2] == value2){
-  	                		checkAction('n');
-  	                	} 
-  	                	*/
   	           			var value1 = array[0][0]; //action
   	                	var value2 = array[0][1]; //nothing
   	                	var value3 = array[0][2]; //ready
   	                	
   	                	var arr = [value1, value2, value3];
   	              		console.log(arr[0] +' '+  arr[1] + ' '+ arr[2])
-  	                	//arr.sort();
   	                	
   	                	if(value1 > value2 && value1 > value3){
   	                		checkAction('a');
-  	                	}else {
-  	                		
-  	         
+  	                	}else { 
   	                		checkAction('r');
   	                	} 
-  	                	/* else if(arr[2] == value2){
-  	                		checkAction('n');
-  	                	} else if(arr[2] == value3){
-  	                		checkAction('r');
-  	                	}  */
   	                })
   	           })
   	           setTimeout(startLaunge,1000); 
@@ -400,7 +348,6 @@
 	}
    
    function changeHeadData(count){
-	   //console.log('######################'+ inputCount + "######" + count);
 	   headData.innerText=item + " : " + count +" 회";
 	   if(inputCount == count) {
 		   alert('운동 종료');
