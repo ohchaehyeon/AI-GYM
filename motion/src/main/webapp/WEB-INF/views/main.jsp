@@ -116,7 +116,7 @@
  	var data = JSON.parse('${data}');
  	var outData = document.getElementById("outData");
 	outData.innerText="PushUp : "+data.pushupCount+ " 회\n"+
-	"Squrt : "+data.squatCount+ " 회\n"+
+	"Squat : "+data.squatCount+ " 회\n"+
 	"SteamEngine : "+data.steamCount+ " 회\n"+
 	"Lunge : "+data.lungeCount+ " 회\n" + "\n";
  </script>

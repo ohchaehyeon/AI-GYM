@@ -9,7 +9,7 @@
      기능 : 웹캠 화면에 gif 추가
 --> 
 <!-- 날짜 : 2022.01.04
-	 작성자 : 오채현
+	 작성자 : 김효석
 	 화면 : webcam 사운드 구현
      기능 : 웹캠 화면에 audio 추가
 --> 
@@ -347,6 +347,7 @@
 	    location.href="/mainBack?data="+encodeURI(JSON.stringify(data));
 	}
    
+   //카운트 완료 후 운동종료 알림 실행
    function changeHeadData(count){
 	   headData.innerText=item + " : " + count +" 회";
 	   if(inputCount == count) {

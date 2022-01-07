@@ -74,6 +74,7 @@
 		window.history.forward();
 	}
 
+	//사용자지정 카운트 입력 및 예외처리
  	function count(){
  		var inputCount = document.getElementById("countInputBox").value; 
  		

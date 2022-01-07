@@ -3,6 +3,11 @@
 	 화면 : 운동종료 후 나오는 화면 구현
      기능 : 운동횟수와 총 소모 칼로리 데이터 처리 구현
 -->
+<!-- 날짜 : 2022.01.04
+    작성자 : 김효석
+    화면 : Finish 사운드 구현
+     기능 : 운동 종료 화면에 audio 추가
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,7 +56,7 @@
 	var nowTime = new Date().getTime() - data.time;
 	
 	outData.innerText="PushUp : "+data.pushupCount+ " 회\n"+
-	"Squrt : "+data.squatCount+ " 회\n"+
+	"Squat : "+data.squatCount+ " 회\n"+
 	"SteamEngine : "+data.steamCount+ " 회\n"+
 	"Lunge : "+data.lungeCount+ " 회\n" + "\n" +
 	"총 소모 칼로리 : " + Math.floor(data.pushupCount*1.8 + data.squatCount*0.4 + data.steamCount*0.9 + data.lungeCount*0.2) +" kcal"+
